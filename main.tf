@@ -1,7 +1,16 @@
+resource "aws_vpc" "My-Test-VPC-Terraform" {
+  cidr_block = "10.0.0.0/16"
+
+  tags = {
+    Name = var.VPC-Name
+  }
+}
+
+
 resource "aws_security_group" "allow_tls" {
   name        = var.aws-SG-name
   description = "Allow TLS inbound traffic and all outbound traffic"
-  vpc_id      = aws_vpc.main.id
+  vpc_id      = aws_vpc.My-Test-VPC-Terraform.id
 
   tags = {
     Name = var.aws-SG-name
